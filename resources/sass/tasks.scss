@@ -1,0 +1,17 @@
+.task-list{
+    &__item{
+        @extend .border, .border-2;
+
+        p{
+            word-wrap: break-word;
+        }
+
+        &__buttons{
+            .btn{
+                &:last-child{
+                    @extend .ms-2
+                }
+            }
+        }
+    }
+}

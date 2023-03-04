@@ -1,0 +1,9 @@
+@import "bootstrap";
+@import "default";
+@import "tasks";
+
+#app{
+    @extend .default-padding;
+    
+    min-height: 100vh;
+}

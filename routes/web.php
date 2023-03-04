@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Tasks\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/tasks');
+});
+
 Route::get('/{any?}', function () {
     return view('app');
+});
+
+Route::prefix('resources')->as('.resources')->group(function ()
+{
+    Route::resource('tasks', TaskController::class)->only([
+        'index', 'store', 'destroy',
+    ]);
+    Route::post('tasks/{task}/finish', [TaskController::class, 'finish'])
+        ->name('tasks.finish');
 });
